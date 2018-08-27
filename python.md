@@ -1,5 +1,10 @@
 # Python
 
+<h1> Salut </h1>
+
+<em> salut </em>
+> Je pense que c'est une bonne situation scribe
+
 ## - Variables
 
 `nom_de_variable = valeur`
@@ -232,14 +237,78 @@ Il faut **stocker** la fonction **dans une variable**
 
 ### Class
 ```python
-class ~nomDeClass:
-      # Constructeur
-      def __init__(self):
-      	  ~code
-          self.variable = "Variable publique"
+class ~nomDeClass(~nomClassHerite):
 
-      def ~fonction(self):
-          self.~variable = "test"
+    #CREATE/DEl
+    # Constructeur
+    def __init__(self):
+        ~code
+        self.~_variable = "Attribut" # Definition d'un attribut implicite
+        nomClassHerite.__init__(self)
+    def __del__(self):
+      #Destructeur
+      ~code
+
+    def ~fonction(self):
+        self.~_variable = "test"
+
+
+    #SETUP METHODS
+    # Debug display
+    def __repr__(self):
+      return "Je suis un joli debug"
+
+    # Debug get
+    def __getattr__(self, name):
+      return "Methode par default de get d'attribut (debug)"
+
+    # Debug set (DO NOT USE)
+    def __setattr__(self, name, value):
+      return "Methode par default de set d'attribut (debug)"
+    # Delete attribute
+    def __delattr__(self, name):
+      return ("name deleted")
+
+    # String conversion
+    def __str__(self):
+      return "Je suis une jolie class"
+
+    # Permet le nomClass[index]
+    def __getitem__(self, index):
+      ~code
+    # Permet le nomClass[index] = 2
+    def __setitem__(self, index, value):
+      ~code
+    # rm nomClass[index]
+    def __delittem__(self, index):
+      ~code
+
+    # Permet l'utilisation de in
+    def __contains__(self, idk):
+      ~code
+
+    # Renvoie la longueur de la classe
+    def __len__(self):
+      ~code
+    #ATTRIBUTS
+    def _get_~variable(self): #Getter implicite de la ~variable
+        return self.~_variable
+
+    def _set_~variable(self, ~nouvelle_variable): #Setter implicite de la ~variable
+        self.~_variable = ~nouvelle_variable
+
+    ~variable = property(_get_variable,
+                        _set_variable,
+                        _del_variable,
+                        _help_variable)
+                        #Definition de l'attribut explicite
+```
+
+```Python
+getattr(objet, "nom") # Semblable à objet.nom
+setattr(objet, "nom", val) # = objet.nom = val ou objet.__setattr__("nom", val)
+delattr(objet, "nom") # = del objet.nom ou objet.__delattr__("nom")
+hasattr(objet, "nom") # Renvoie True si l'attribut "nom" existe, False sinon
 ```
 
 ## Modules
