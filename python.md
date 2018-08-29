@@ -302,6 +302,9 @@ class ~nomDeClass(~nomClassHerite):
                         _del_variable,
                         _help_variable)
                         #Definition de l'attribut explicite
+
+var = ~nomClass()
+
 ```
 
 ```Python
